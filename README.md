@@ -1,55 +1,58 @@
 # 🎯 Deep Face Detection & Tracking
 
-This project implements a **deep learning face tracker** using **TensorFlow (VGG16 backbone), custom training loops, and OpenCV**.  
-It performs **binary face detection** and **bounding box regression** in real-time from your webcam.  
-The dataset is prepared using **LabelMe** for annotations and **Albumentations** for augmentation.
+[![Python](https://img.shields.io/badge/Python-3.12-blue)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green)](https://opencv.org/)
+
+This project implements a **deep learning-based face tracker** using **TensorFlow (VGG16 backbone)**,  
+**custom training loops**, and **OpenCV** for real-time webcam inference.  
+
+It performs:
+- ✅ **Binary Face Detection**  
+- ✅ **Bounding Box Regression**  
+
+The dataset was labeled using **[LabelMe](https://github.com/wkentaro/labelme)** and augmented with **[Albumentations](https://albumentations.ai/)**.
 
 ---
 
 ## 🚀 Features
-- **Custom training & evaluation loops** (not just `model.fit`)
-- **Two-branch model**:
-  - **Classification**: Detects if a face exists (`BinaryCrossEntropy`)
-  - **Regression**: Predicts bounding box coordinates (`custom localization loss`)
-- **VGG16 Backbone** with `include_top=False`
-- **Efficient Data Pipeline** using `tf.data` (shuffle, batch, prefetch)
-- **Real-Time Inference** from webcam using OpenCV
-- **Augmented Data Support** with Albumentations
-- **Model Saving/Loading** in `.keras` format
+- 🔹 **Custom training & evaluation loops** (not just `model.fit`)
+- 🔹 **Two-branch model**:
+  - **Classification** → Detects if a face exists (`BinaryCrossEntropy`)
+  - **Regression** → Predicts bounding box coordinates (`custom localization loss`)
+- 🔹 **VGG16 Backbone** with `include_top=False`
+- 🔹 **Efficient Data Pipeline** using `tf.data` (shuffle, batch, prefetch)
+- 🔹 **Real-Time Inference** from webcam using OpenCV
+- 🔹 **Augmented Data Support** with Albumentations
+- 🔹 **Model Saving/Loading** in `.keras` format
 
 ---
 
 ## 📂 Project Structure
-``` bash
-Deep Face Detection Model/
-│── aug_data/ # Augmented dataset
-│ ├── train/
-│ │ ├── images/
-│ │ └── labels/
-│ ├── val/
-│ │ ├── images/
-│ │ └── labels/
-│ └── test/
-│ ├── images/
-│ └── labels/
+```bash
+Deep-Face-Detection-Model/
+│── aug_data/                 # Augmented dataset
+│   ├── train/
+│   │   ├── images/
+│   │   └── labels/
+│   ├── val/
+│   │   ├── images/
+│   │   └── labels/
+│   └── test/
+│       ├── images/
+│       └── labels/
 │
-│── data/ # Original dataset
-│ ├── train/
-│ │ ├── images/
-│ │ └── labels/
-│ ├── val/
-│ │ ├── images/
-│ │ └── labels/
-│ └── test/
-│ ├── images/
-│ └── labels/
+│── data/                     # Original dataset
+│   ├── train/
+│   ├── val/
+│   └── test/
 │
-│── facetracker_full.keras # Saved trained model
-│── Deep_Face_Detection_Model.ipynb # Jupyter notebook (experiments/training)
-│── requirements.txt # Dependencies
-│── README.md # Documentation
-│── aug_data.zip # Zipped augmented data
-│── venv/ # Virtual environment (ignored in GitHub)
+│── facetracker_full.keras     # Saved trained model
+│── Deep_Face_Detection_Model.ipynb   # Jupyter notebook (training + inference)
+│── requirements.txt           # Dependencies
+│── README.md                  # Documentation
+│── aug_data.zip               # Zipped augmented dataset
+│── venv/                      # Virtual environment (ignored in GitHub)
 ```
 
 ---
@@ -63,15 +66,15 @@ Deep Face Detection Model/
    ```
 
 ### 2. Create Virtual Environments (recommended):
-    ```bash
-    conda create -p venv python==3.12 -y
-    conda activate venv/
-    ```
+```bash
+conda create -p venv python==3.12 -y
+conda activate venv/
+```
 
 ### 3. Install Dependencies:
-    ```bash 
-    pip install -r requirements.txt
-    ```
+```bash 
+pip install -r requirements.txt
+```
 
 ---
 
@@ -152,12 +155,30 @@ Inside the notebook, you can:
 
 ### 💾 Saving & Loading Model
 ```python
-# Save
+# Save locally
 facetracker.save("facetracker_full.keras")
 
-# Load
+# Load loaclly
 from tensorflow import keras
 model = keras.models.load_model("facetracker_full.keras")
+```
+
+---
+
+### 📥 Load Model from Hugging Face Hub
+You can also load the model directly from the Hugging Face Hub without downloading manually:
+```python
+import tensorflow as tf
+from huggingface_hub import hf_hub_download
+
+# Download from Hugging Face Hub
+model_path = hf_hub_download(
+    repo_id="samarthchugh/deep-face-detection",  # change if repo name differs
+    filename="facetracker_full.keras"
+)
+
+# Load into TensorFlow
+model = tf.keras.models.load_model(model_path)
 ```
 
 ---
