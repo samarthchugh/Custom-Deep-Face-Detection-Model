@@ -3,6 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.12-blue)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green)](https://opencv.org/)
+[![HuggingFace](https://img.shields.io/badge/🤗-Model%20on%20HuggingFace-yellow)](https://huggingface.co/samarthchugh/deep-face-detection)
 
 This project implements a **deep learning-based face tracker** using **TensorFlow (VGG16 backbone)**,  
 **custom training loops**, and **OpenCV** for real-time webcam inference.  
@@ -166,7 +167,7 @@ model = keras.models.load_model("facetracker_full.keras")
 ---
 
 ### 📥 Load Model from Hugging Face Hub
-You can also load the model directly from the Hugging Face Hub without downloading manually:
+The trained model is available on [Hugging Face Hub](https://huggingface.co/PredatorAlpha/Custom-Face-Tracker-Model)
 ```python
 import tensorflow as tf
 from huggingface_hub import hf_hub_download
@@ -185,5 +186,8 @@ model = tf.keras.models.load_model(model_path)
 
 # 👨‍💻 Author
 ### Samarth Chugh
-- 📧[samarthchugh049@gmail.com](samarthchugh049@gmail.com)
-- [Samarth Chugh](www.linkedin.com/in/-samarthchugh)
+
+- <img src="https://img.icons8.com/color/20/000000/gmail-new.png"/> [Gmail](mailto:samarthchugh049@gmail.com)  
+- <img src="https://img.icons8.com/color/20/000000/linkedin.png"/> [LinkedIn](https://www.linkedin.com/in/-samarthchugh/)  
+- <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" width="20"/> [HuggingFace](https://huggingface.co/PredatorAlpha)  
+- <img src="https://img.icons8.com/ios-glyphs/20/ffffff/github.png" style="background:black; border-radius:3px;"/> [GitHub](https://github.com/samarthchugh)  
