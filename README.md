@@ -62,8 +62,8 @@ Deep-Face-Detection-Model/
 
 ### 1. Clone the repository:
    ```bash
-   git clone https://github.com/samarthchugh/deep-face-detection.git
-   cd deep-face-detection
+   git clone https://github.com/samarthchugh/Custom-Deep-Face-Detection-Model.git
+   cd Custom-Deep-Face-Detection-Model
    ```
 
 ### 2. Create Virtual Environments (recommended):
